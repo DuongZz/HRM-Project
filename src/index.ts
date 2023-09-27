@@ -13,7 +13,6 @@ import { errorHandler } from './middleware/errorHandler';
 import { getLanguage } from './middleware/getLanguage';
 import routes from './routes';
 import { dbCreateConnection } from './typeorm/dbCreateConnection';
-
 export const app = express();
 app.use(cors());
 app.use(helmet());
