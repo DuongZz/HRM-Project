@@ -1,7 +1,7 @@
 export const SERVER = {
   servers: [
     {
-      url: 'http://localhost:4000/v1/absent-request',
+      url: 'http://localhost:4000/v1',
     },
   ],
 };

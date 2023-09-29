@@ -8,6 +8,31 @@ export const COMPONENTS = {
       },
     },
     schemas: {
+      RequestAbsent: {
+        type: 'object',
+        properties: {
+          main_point: {
+            type: 'string',
+            description: 'Main Reason About Absent Request',
+            example: 'Go to USA, California with mom',
+          },
+          reason: {
+            type: 'string',
+            description: 'Details Reason about Absent Request',
+            example: `the reason that i'm absent today is related to drinking with mom latenight in California`,
+          },
+          date_of_absence_begin: {
+            type: 'string',
+            description: 'The beginning date of absent period',
+            example: '2024/11/18 13:00',
+          },
+          date_of_absence_end: {
+            type: `string`,
+            description: `The end date of absent period`,
+            example: `2024/11/19 12:00`,
+          },
+        },
+      },
       ErrorCode400: {
         type: 'object',
         properties: {
