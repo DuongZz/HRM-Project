@@ -1,13 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
 import { DEVICE_STATUS } from './types';
 import { User } from './User';
+import { DeviceUser } from './deviceUser';
 // import { DeviceUser } from './deviceUser';
 @Entity('Device')
 export class Device {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   name_device: string;
 
   @Column({
@@ -26,6 +29,6 @@ export class Device {
   })
   quantity: number;
 
-  @ManyToOne(() => User)
-  user: User;
+  @OneToMany(() => DeviceUser, (deviceUser) => deviceUser.device)
+  deviceUsers: DeviceUser[];
 }

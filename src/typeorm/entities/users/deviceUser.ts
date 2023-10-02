@@ -1,17 +1,15 @@
-// import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToOne, Column } from 'typeorm';
-// import { User } from './User';
-// import { Device } from './device';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToOne, Column } from 'typeorm';
+import { User } from './User';
+import { Device } from './device';
 
-// @Entity()
-// export class DeviceUser {
-//   @PrimaryGeneratedColumn()
-//   id: number;
+@Entity()
+export class DeviceUser {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-//   @ManyToOne(() => User)
-//   @JoinColumn({ name: 'user_id' })
-//   user: User;
+  @ManyToOne(() => User)
+  user: User;
 
-//   @ManyToOne(() => Device)
-//   @JoinColumn({ name: 'device_id' })
-//   device: Device;
-// }
+  @ManyToOne(() => Device)
+  device: Device;
+}

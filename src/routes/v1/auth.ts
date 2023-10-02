@@ -9,7 +9,7 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/login', [validatorLogin], login);
-router.post('/register', [checkJwt], checkRole([ROLE_TYPE.HR]), [validatorRegister], register);
+router.post('/register', [checkJwt], checkRole([ROLE_TYPE.HR, ROLE_TYPE.MANAGER]), [validatorRegister], register);
 router.post('/change-password', [checkJwt, validatorChangePassword], changePassword);
 
 export default router;

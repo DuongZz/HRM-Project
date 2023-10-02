@@ -10,14 +10,14 @@ const router = Router();
 
 router.get('/', [checkJwt, checkRole([ROLE_TYPE.MANAGER])], list);
 
-router.get('/:id([0-9]+)', [checkJwt, checkRole([ROLE_TYPE.MANAGER], true)], show);
+router.get('/view/:id', [checkJwt, checkRole([ROLE_TYPE.MANAGER, ROLE_TYPE.HR], true)], show);
 
 router.patch(
-  '/:id([0-9]+)',
+  '/:id([a-z0-9A-Z-]+)',
   [checkJwt, checkRole([ROLE_TYPE.MANAGER, ROLE_TYPE.EMPLOYEE, ROLE_TYPE.HR], true), validatorEdit],
   edit,
 );
 
-router.delete('/:id([0-9]+)', [checkJwt, checkRole([ROLE_TYPE.MANAGER], true)], destroy);
+router.delete('/delete/:id', [checkJwt, checkRole([ROLE_TYPE.MANAGER], true)], destroy);
 
 export default router;

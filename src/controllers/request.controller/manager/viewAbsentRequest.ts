@@ -7,15 +7,36 @@ import { requestViewWithIdFilter } from '@/services/request.service/viewRequest.
 import { requestAbsent } from '../user/requestAbsent';
 
 export const viewAbsentRequest = async (req: Request, res: Response, next: NextFunction) => {
-  const queryId = req.params.id;
+  const userInfo = req.jwtPayload.role;
+  if (userInfo == 'MANAGER') {
+    const id = req.params.id;
+    try {
+      const absentRequestLists = await requestViewWithIdFilter(id);
 
-  try {
-    const absentRequestLists = await requestViewWithIdFilter(queryId);
+      res.customSuccess(200, 'List of absent requests', absentRequestLists);
+    } catch (err) {
+      const customError = new CustomError(400, 'Raw', `Can't retrieve list of requests.`, null, err);
+      return next(customError);
+    }
+  } else {
+    if (req.params.id != req.jwtPayload.id) {
+      const customError = new CustomError(
+        403,
+        'Raw',
+        `You cannot access these resources because of lacking authorization`,
+        null,
+      );
+      return next(customError);
+    }
+    const id = req.jwtPayload.id;
+    try {
+      const absentRequestLists = await requestViewWithIdFilter(id);
 
-    res.customSuccess(200, 'List of absent requests', absentRequestLists);
-  } catch (err) {
-    const customError = new CustomError(400, 'Raw', `Can't retrieve list of requests.`, null, err);
-    return next(customError);
+      res.customSuccess(200, 'List of absent requests', absentRequestLists);
+    } catch (err) {
+      const customError = new CustomError(400, 'Raw', `Can't retrieve list of requests.`, null, err);
+      return next(customError);
+    }
   }
 };
 
