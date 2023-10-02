@@ -12,7 +12,6 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 
   try {
     const user = await userRepository.findOne({ where: { email } });
-    console.log('user:', user);
 
     if (user) {
       const customError = new CustomError(400, 'General', 'User already exists', [

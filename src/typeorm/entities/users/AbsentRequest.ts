@@ -4,17 +4,17 @@ import { ABSENT_REQUEST, IIsAccepted } from '@/enum/requestEnums';
 
 @Entity('absent-request')
 export class AbsentRequest {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  username: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   main_point: string;
 
-  @Column()
-  date_of_absence: Date;
+  @Column({ default: null, nullable: true })
+  date_of_absence_begin: Date;
+
+  @Column({ default: null, nullable: true })
+  date_of_absence_end: Date;
 
   @Column()
   reason: string;

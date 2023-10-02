@@ -1,4 +1,4 @@
-import { VALIDATE } from '@/constants/validateConstants';
+import { PASSWORD_MIN_CHAR } from '@/constants/validateConstants';
 import { CustomError } from '@/utils/response/custom-error/CustomError';
 import { ErrorValidation } from '@/utils/response/custom-error/types';
 import { Request, Response, NextFunction } from 'express';
@@ -23,9 +23,9 @@ export const validatorChangePassword = (req: Request, res: Response, next: NextF
     errorsValidation.push({ passwordConfirm: 'Password confirm is required' });
   }
 
-  if (!validator.isLength(passwordNew, { min: VALIDATE.PASSWORD.PASSWORD_MIN_CHAR })) {
+  if (!validator.isLength(passwordNew, { min: PASSWORD_MIN_CHAR })) {
     errorsValidation.push({
-      passwordNew: `Password must be at least ${VALIDATE.PASSWORD.PASSWORD_MIN_CHAR} characters`,
+      passwordNew: `Password must be at least ${PASSWORD_MIN_CHAR} characters`,
     });
   }
 

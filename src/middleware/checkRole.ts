@@ -9,7 +9,7 @@ export const checkRole = (roles: ROLE_TYPE[], isSelfAllowed = false) => {
 
     let errorSelfAllowed: string | null = null;
     if (isSelfAllowed) {
-      if (id === parseInt(requestId)) {
+      if (id === requestId) {
         return next();
       }
       errorSelfAllowed = 'Self allowed action.';

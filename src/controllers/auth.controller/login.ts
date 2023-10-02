@@ -8,11 +8,9 @@ import { getRepository } from 'typeorm';
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
-
   const userRepository = getRepository(User);
   try {
     const user = await userRepository.findOne({ where: { email } });
-
     if (!user) {
       const customError = new CustomError(404, 'General', 'Not Found', ['Incorrect email or password']);
       return next(customError);
@@ -30,7 +28,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       role: user.role as ROLE_TYPE,
       created_at: user.created_at,
     };
-
     try {
       const token = createJwtToken(jwtPayload);
       res.customSuccess(200, 'Token successfully created.', `Bearer ${token}`);
@@ -39,6 +36,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       return next(customError);
     }
   } catch (err) {
+    console.log(err);
     const customError = new CustomError(400, 'Raw', 'Error', null, err);
     return next(customError);
   }

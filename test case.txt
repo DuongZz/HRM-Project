@@ -1,0 +1,29 @@
+POST / 
+
+1) Chỉ Employee, HR mới được request, Admin ko
+2) 4 trường up lên bao gồm : mục đích chính, ngày giờ bắt đầu nghỉ 
+và kết thúc nghỉ, lý do. 
+3) Request sau khi nộp lên sẽ ở trạng thái PENDING
+
+GET /
+
+CHỈ MANAGER mới có quyền
+
+1) Get ra tất cả các request có trong database.
+2) Nếu có query params (?id=), thì sẽ lọc request theo
+ userid
+
+PATCH /:id request ( xem trong bảng tableplus )
+
+1) MANAGER mới có quyền
+2) Manager nhập vào trường is_accepted, có quyền
+phê duyệt bằng APPROVED hay REJECTED
+
+3) NẾU đơn đã được approved hay rejected thì in ra 
+thông báo là đã xử lý (handle request)
+
+4) Nếu đơn đang pending mà cố tình gửi pending thì sẽ
+in ra thông báo "not allowed..."
+
+MANAGER : mikawabang1@gmail.com
+HR : mikawabang2@gmail.com
