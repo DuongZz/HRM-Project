@@ -23,15 +23,7 @@ const GET = {
         required: true,
       },
     ],
-    // requestBody: {
-    //   content: {
-    //     'application/json': {
-    //       schema: {
-    //         $ref: '#/components/schemas/viewAbsentRequest',
-    //       },
-    //     },
-    //   },
-    // },
+
     responses: {
       200: {
         description: '**GET USER SUCCESFULLY**',

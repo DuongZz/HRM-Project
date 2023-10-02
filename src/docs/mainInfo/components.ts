@@ -1,3 +1,4 @@
+import { register } from './../../controllers/auth.controller/register';
 export const COMPONENTS = {
   components: {
     securitySchemes: {
@@ -203,12 +204,62 @@ export const COMPONENTS = {
           email: {
             type: 'string',
             example: 'duongdaoq@gmail.com',
-            description: 'Email can not null',
+            description: 'Username can not null',
           },
           password: {
             type: 'string',
             example: 'Duck130603@',
             description: 'Password can not null',
+          },
+        },
+      },
+      device: {
+        type: 'Object',
+        properties: {
+          id: {
+            type: 'string',
+            example: 'cb2254b9-b7e0-4592-b8ae-757b14701cb0',
+            description: 'uuid',
+          },
+          name_device: {
+            type: 'string',
+            example: 'Iphone 15',
+            description: 'Name device can not null',
+          },
+          device_status: {
+            type: 'enum',
+            example: 'AVAILABLE',
+            description: 'Available or Unavailable',
+          },
+          description: {
+            type: 'string',
+            example: 'Pro max',
+            description: 'Can null',
+          },
+          quantity: {
+            type: 'number',
+            example: '10',
+            description: 'Quantity can not null',
+          },
+        },
+      },
+      register: {
+        type: 'Object',
+        properties: {
+          email: {
+            type: 'string',
+            example: 'duongdaoq@gmail.com',
+            description: 'Username can not null',
+          },
+          password: {
+            type: 'string',
+            example: 'Duck130603@',
+            description: 'Password can not null',
+          },
+          passwordConfirm: {
+            type: 'string',
+            example: 'Duck130603@',
+            description: 'Please confirm password',
           },
         },
       },

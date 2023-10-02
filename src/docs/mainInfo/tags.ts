@@ -2,7 +2,10 @@ export const TAG = {
   ABSENT_REQUEST: {
     tags: { name: 'Absent-Request' },
   },
-  AUTHENTICATION: {
+  AUTH: {
     tags: { name: 'Authentication' },
+  },
+  DEVICE: {
+    tags: { name: 'Device' },
   },
 };

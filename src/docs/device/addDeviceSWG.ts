@@ -2,48 +2,39 @@ import { TAG } from '../mainInfo/tags';
 
 const POST = {
   post: {
-    security: [{ bearerAuth: [] }],
-
-    summary: `View register only by HR`,
-    tags: [TAG.AUTH.tags.name],
-    description: 'Register new employee',
-    operationId: 'viewRegister',
+    summary: `Add new device by manager`,
+    tags: [TAG.DEVICE.tags.name],
+    description: 'Add new device',
+    operationId: 'viewDeviceManager',
     requestBody: {
       content: {
         'application/json': {
           schema: {
-            $ref: '#/components/schemas/register',
+            $ref: '#/components/schemas/device',
           },
         },
         'application/xml': {
           schema: {
-            $ref: '#/components/schemas/register',
+            $ref: '#/components/schemas/device',
           },
         },
         'application/x-www-form-url-urlencoded': {
           schema: {
-            $ref: '#/components/schemas/register',
+            $ref: '#/components/schemas/device',
           },
         },
       },
     },
     responses: {
       200: {
-        description: 'Register successfully',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/rêgister',
-            },
-          },
-        },
+        description: 'Add device successfully',
       },
       400: {
         description: {
           content: {
             'application/json': {
               schema: {
-                $ref: `#/components/schemas/ErrorCode400`,
+                $ref: '#/components/schemas/ErrorCode400',
               },
             },
           },
@@ -52,5 +43,4 @@ const POST = {
     },
   },
 };
-
 export default POST;

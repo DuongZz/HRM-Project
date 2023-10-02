@@ -32,5 +32,5 @@ router.post(
 
 router.post('/edit-device', [checkJwt, checkRole([ROLE_TYPE.MANAGER])], editDevice);
 
-router.delete('/delete', [checkJwt, checkRole([ROLE_TYPE.MANAGER])], checkDeviceExistence, deleteDevice);
+router.delete('/delete/:id', [checkJwt, checkRole([ROLE_TYPE.MANAGER])], checkDeviceExistence, deleteDevice);
 export default router;

@@ -3,9 +3,9 @@ import { TAG } from '../mainInfo/tags';
 const POST = {
   post: {
     summary: `Account administrator authentication, unauthorized users`,
-    tags: [TAG.AUTHENTICATION.tags.name],
+    tags: [TAG.AUTH.tags.name],
     description: 'Administrator authentication',
-    operationId: 'viewAdmin',
+    operationId: 'viewLogin',
     requestBody: {
       content: {
         'application/json': {

@@ -4,7 +4,7 @@ import { Device } from '@/typeorm/entities/users/device';
 
 export const checkDeviceExistence = async (req: Request, res: Response, next: NextFunction) => {
   const deviceRepository = getRepository(Device);
-  const id = req.body.id;
+  const id = req.params.id;
 
   try {
     const device = await deviceRepository.findOne(id);
