@@ -1,11 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne } from 'typeorm';
 import { DEVICE_STATUS } from './types';
 import { User } from './User';
-import { DeviceDetails } from './deviceDetails';
+// import { DeviceUser } from './deviceUser';
 @Entity('Device')
 export class Device {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   name_device: string;
@@ -26,9 +26,6 @@ export class Device {
   })
   quantity: number;
 
-  @ManyToOne(() => User, (user) => user.devices)
+  @ManyToOne(() => User)
   user: User;
-
-  @OneToOne(() => DeviceDetails, (deviceDetails) => deviceDetails.device, { cascade: true })
-  deviceDetails: DeviceDetails;
 }

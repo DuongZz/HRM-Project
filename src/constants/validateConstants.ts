@@ -68,3 +68,4 @@ function isValidDate(dateString: string) {
 export const MAIN_POINT_MIN_CHAR = 20;
 export const REASON_MIN_CHAR = 50;
 export const REASON_MAX_CHAR = 1000;
+export const MAX_DAY_LATE = 5 * 60 * 1000 * 60 * 24;

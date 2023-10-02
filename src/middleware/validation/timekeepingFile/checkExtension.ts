@@ -4,6 +4,7 @@ import { CustomError } from '@/utils/response/custom-error/CustomError';
 import { NextFunction, Request, Response } from 'express';
 
 export const checkFileExtension = (req: Request, res: Response, next: NextFunction) => {
+  if (!req.file) next(new CustomError(400, ErrorType.GENERAL, ErrorMessage.NO_FILE_TO_UPLOAD));
   const { originalname } = req.file;
   const arrayWhenSplitName: string[] = originalname.split('.');
   const extension = arrayWhenSplitName[arrayWhenSplitName.length - 1];

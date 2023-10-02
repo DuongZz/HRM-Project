@@ -3,7 +3,7 @@ import { ErrorValidation } from '@/utils/response/custom-error/types';
 import { Request, Response, NextFunction } from 'express';
 import validator from 'validator';
 
-import { REQUEST_VALIDATE, isDateInvalidOrNot } from '@/constants/validateConstants';
+import { MAX_DAY_LATE, REQUEST_VALIDATE, isDateInvalidOrNot } from '@/constants/validateConstants';
 import { MAIN_POINT_MIN_CHAR, REASON_MAX_CHAR, REASON_MIN_CHAR } from '@/constants/validateConstants';
 
 export const validatorRequest = async (req: Request, res: Response, next: NextFunction) => {
@@ -37,7 +37,8 @@ export const validatorRequest = async (req: Request, res: Response, next: NextFu
     errorsValidation.push({ date_of_absence: REQUEST_VALIDATE.DATE.INVALID_DATE });
   }
 
-  if (requestedTimeBegin.getTime < now || requestedTimeEnd.getTime < now) {
+  // Maximum 5 day late request count from the past if the request was sent after absent.
+  if (requestedTimeBegin.getTime < now - MAX_DAY_LATE || requestedTimeEnd.getTime < now - MAX_DAY_LATE) {
     errorsValidation.push({ date_of_absence: REQUEST_VALIDATE.DATE.INVALID_PAST_REQUESTED_DATE });
   }
 

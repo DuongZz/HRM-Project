@@ -9,7 +9,6 @@ export const edit = async (req: Request, res: Response, next: NextFunction) => {
   const role = req.jwtPayload.role;
   const passedId = req.params.id;
   const editInfo = req.body;
-  // Check neu la manager va id truyen vao tu route params co gia tri phu hop
   if (role == ROLE_TYPE.MANAGER) {
     id = passedId;
   }
