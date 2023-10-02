@@ -33,7 +33,7 @@ const POST = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/components/schemas/rêgister',
+              $ref: '#/components/schemas/register',
             },
           },
         },

@@ -7,7 +7,20 @@ const PATCH = {
     tags: [TAG.ABSENT_REQUEST.tags.name],
     description: 'Handle absent-request by **Employee and HR** can provide information about Employee working status',
     operationId: 'handleRequest',
-    parameters: [],
+    parameters: [
+      {
+        name: 'id',
+        in: 'path',
+        schema: {
+          type: 'string',
+          description: 'the tracking information for id',
+          default: 'f5a7124c-e476-4f62-8b6b-ef8299517ad5',
+          example: 'f5a7124c-e476-4f62-8b6b-ef8299517ad5',
+        },
+        description: 'Fields that filtered the request only by RequestID',
+        required: true,
+      },
+    ],
     requestBody: {
       content: {
         'application/json': {

@@ -1,6 +1,7 @@
 import viewAbsentRequestsBySwagger from './viewAbsentRequestsSWG';
 import viewAbsentRequestBySwagger from './viewAbsentRequestSWG';
 import requestAbsentBySwagger from './requestAbsentSWG';
+import handleAbsentRequestBySwagger from './handleAbsentRequestSWG';
 
 const PathAbsentRequest = {
   '/absent-request/view': {
@@ -12,6 +13,8 @@ const PathAbsentRequest = {
   '/absent-request': {
     ...requestAbsentBySwagger,
   },
-  '/request-handler/{id}': {},
+  '/absent-request/request-handler/{id}': {
+    ...handleAbsentRequestBySwagger,
+  },
 };
 export default PathAbsentRequest;

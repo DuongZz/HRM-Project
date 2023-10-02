@@ -9,6 +9,21 @@ export const COMPONENTS = {
       },
     },
     schemas: {
+      EditUserInfo: {
+        type: 'object',
+        properties: {
+          username: {
+            type: `string`,
+            description: `The unique name of the account`,
+            example: `ducminh12345`,
+          },
+          name: {
+            type: `string`,
+            description: `The full name of the account owner`,
+            example: `NDM`,
+          },
+        },
+      },
       HandleAbsentRequest: {
         type: 'object',
         properties: {

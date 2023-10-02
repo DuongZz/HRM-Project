@@ -14,9 +14,9 @@ export const handleAbsentRequest = async (req: Request, res: Response, next: Nex
     const managerName = req.jwtPayload.name;
     const { is_accepted } = req.body;
     const id = req.params.id;
+    console.log(id);
     const absentRequestRepository = getRepository(AbsentRequest);
     let requestFind = await absentRequestRepository.findOne({ where: { id } });
-    console.log('gay');
     // 1. check if status is approved or rejected
     // 2. If pending, skip and go to code below this code.
     if (await checkIfRequestIsAcceptedOrNot(requestFind)) {
