@@ -8,6 +8,17 @@ export const COMPONENTS = {
       },
     },
     schemas: {
+      HandleAbsentRequest: {
+        type: 'object',
+        properties: {
+          is_accepted: {
+            type: `string`,
+            enum: [`APPROVED`, `PENDING`, `REJECTED`],
+            description: `The end date of absent period`,
+            example: `APPROVED`,
+          },
+        },
+      },
       RequestAbsent: {
         type: 'object',
         properties: {
@@ -183,6 +194,21 @@ export const COMPONENTS = {
             type: `string`,
             description: `The manager name that either handled the request or not, if not, this fields is null`,
             example: `null`,
+          },
+        },
+      },
+      authentication: {
+        type: 'Object',
+        properties: {
+          email: {
+            type: 'string',
+            example: 'duongdaoq@gmail.com',
+            description: 'Email can not null',
+          },
+          password: {
+            type: 'string',
+            example: 'Duck130603@',
+            description: 'Password can not null',
           },
         },
       },

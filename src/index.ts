@@ -2,15 +2,13 @@ import 'dotenv/config';
 import 'reflect-metadata';
 import fs from 'fs';
 import path from 'path';
-import swaggerUI from 'swagger-ui-express';
-import swaggerJSDoc from 'swagger-jsdoc';
 
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { docs } from './docs/index';
-import swaggerJSON from '../swaggerJSON.json';
+import http from 'http';
 
 import swaggerUi from 'swagger-ui-express';
 import './utils/response/customSuccess';
@@ -18,22 +16,8 @@ import { errorHandler } from './middleware/errorHandler';
 import { getLanguage } from './middleware/getLanguage';
 import routes from './routes';
 import { dbCreateConnection } from './typeorm/dbCreateConnection';
-import swaggerDoc from './swagger';
 
 export const app = express();
-
-const options = {
-  swaggerOptions: {
-    authAction: {
-      JWT: {
-        name: 'JWT',
-        schema: { type: 'apiKey', in: 'header', name: 'Authorization', description: '' },
-        value: 'Bearer <JWT>',
-      },
-    },
-  },
-};
-// const specs = swaggerJSDoc(docs);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(docs));
 app.use(cors());
@@ -54,10 +38,9 @@ app.use(morgan('combined'));
 
 app.use('/', routes);
 
-// app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
-
 app.use(errorHandler);
 const port = process.env.PORT || 4000;
+
 (async () => {
   await dbCreateConnection();
   app.listen(port, () => {

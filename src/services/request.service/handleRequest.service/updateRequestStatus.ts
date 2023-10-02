@@ -22,7 +22,6 @@ export const updateRequestStatus = async (managerName, is_accepted, id, requestF
       null,
       err,
     );
-    return customError;
+    throw customError;
   }
-  return true;
 };

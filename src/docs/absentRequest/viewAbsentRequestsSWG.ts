@@ -7,20 +7,7 @@ const GET = {
     tags: [TAG.ABSENT_REQUEST.tags.name],
     description: 'View absent-request from Employee and HR can provide information about Employee working status',
     operationId: 'viewAllRequest',
-    parameters: [
-      {
-        name: 'main_point',
-        in: 'path',
-        schema: {
-          type: 'string',
-          description: 'the tracking information for id',
-          default: '9bbf6f96-98c2-4312-a641-963e88c2dc1b',
-          example: '9bbf6f96-98c2-4312-a641-963e88c2dc1b',
-        },
-        description: 'Fields that filtered the request only by UserID',
-        required: true,
-      },
-    ],
+    parameters: [],
 
     responses: {
       200: {
